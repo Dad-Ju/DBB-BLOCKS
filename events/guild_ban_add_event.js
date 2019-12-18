@@ -1,7 +1,7 @@
 module.exports = {
-    "name": "Message Reaction Remove [Event]",
+    "name": "Guild Ban Add [Event]",
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a reaction is removed from a cached message, this event will trigger",
+    "description": "When a member is banned from a guild, this event will trigger",
     "category": "Events",
     "auto_execute": true,
     "inputs": [],
@@ -16,12 +16,12 @@ module.exports = {
             ]
         },
         {
-            "name": "messagereaction",
-            "title": "MessageReaction",
+            "name": "guild",
+            "title": "Guild",
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The reaction object"
+            "description": "Type: Object\n\nDescription: The guild that the ban occurred in"
         },
         {
             "name": "user",
@@ -29,13 +29,13 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The user whose emoji or reaction emoji was removed"
+            "description": "Type: Object\n\nDescription: The user that was banned"
         }
     ],
     "code": function(cache){
-        this.client.on( 'messageReactionRemove' , (messagereaction, user) => { 
-            this.StoreOutputValue( messagereaction , 'messagereaction' , cache); 
-            this.StoreOutputValue( user , 'user' , cache);  
+        this.client.on( 'guildBanAdd' , (guild, User) => { 
+            this.StoreOutputValue( guild , 'guild' , cache); 
+            this.StoreOutputValue( User , 'User' , cache);  
             this.RunNextBlock('action', cache); 
         });
     }

@@ -1,7 +1,7 @@
 module.exports = {
-    "name": "Message Reaction Remove [Event]",
+    "name": "Typing Stop [Event]",
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a reaction is removed from a cached message, this event will trigger",
+    "description": "When a user stops typing in a channel (BY USE CAN DECRESE SPEED OF THE BOT), this event will trigger",
     "category": "Events",
     "auto_execute": true,
     "inputs": [],
@@ -16,12 +16,12 @@ module.exports = {
             ]
         },
         {
-            "name": "messagereaction",
-            "title": "MessageReaction",
+            "name": "channel",
+            "title": "Channel",
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The reaction object"
+            "description": "Type: Object\n\nDescription: The channel the user stopped typing in"
         },
         {
             "name": "user",
@@ -29,12 +29,12 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The user whose emoji or reaction emoji was removed"
+            "description": "Type: Object\n\nDescription: The user that stopped typing"
         }
     ],
     "code": function(cache){
-        this.client.on( 'messageReactionRemove' , (messagereaction, user) => { 
-            this.StoreOutputValue( messagereaction , 'messagereaction' , cache); 
+        this.client.on( 'typingStop' , (channel, user) => { 
+            this.StoreOutputValue( channel , 'channel' , cache); 
             this.StoreOutputValue( user , 'user' , cache);  
             this.RunNextBlock('action', cache); 
         });
