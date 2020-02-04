@@ -1,7 +1,7 @@
 module.exports = {
     name: "Get User Info",
 
-    author: "GOLD - modifyed by Dad_Ju"
+    author: "GOLD - modifyed by Dad_Ju",
 
     description: "Get User information.",
 
