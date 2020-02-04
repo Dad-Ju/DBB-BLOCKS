@@ -1,5 +1,5 @@
 module.exports = {
-    name: "Joine Voice Channel",
+    name: "Join Voice Channel",
 
     author: "Dad_Ju aka Ju#2402",
 
