@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Channel Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a channel is updated - e.g. name change, topic change, this event will trigger",
+
+    "description": "When a Channel is updated - e.g. Name change, Topic change, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+    
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The channel before the update"
+            "description": "Type: Object\n\nDescription: The Channel before the update"
         },
         {
             "name": "newchannel",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The channel after the update"
+            "description": "Type: Object\n\nDescription: The Channel after the update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'channelUpdate' , (oldchannel, newchannel) => {
             this.StoreOutputValue( oldchannel , 'oldchannel' , cache); 

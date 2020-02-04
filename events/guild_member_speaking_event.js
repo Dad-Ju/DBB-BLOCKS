@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Guild Member Speaking [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a guild member starts/stops speaking, this event will trigger",
+
+    "description": "When a Guild Member starts/stops speaking, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The member that started/stopped speaking"
+            "description": "Type: Object\n\nDescription: The Member that started/stopped speaking"
         },
         {
             "name": "speaking",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "boolean"
             ],
-            "description": "Type: boolean\n\nDescription: Whether or not the member is speaking"
+            "description": "Type: boolean\n\nDescription: Whether or not the Member is speaking"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'guildMemberSpeaking' , (member, speaking) => { 
             this.StoreOutputValue( member , 'member' , cache); 

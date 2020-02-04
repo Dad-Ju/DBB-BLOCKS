@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Guild Members Chunk [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When  a chunk of guild members is received (all members come from the same guild), this event will trigger",
+
+    "description": "When a chunk of Guild-Members is received (all Members come from the same Guild), this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The guild related to the member chunk"
+            "description": "Type: Object\n\nDescription: The Guild related to the member chunk"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'guildMembersChunk' , (members, guild) => { 
             this.StoreOutputValue( members , 'members' , cache); 

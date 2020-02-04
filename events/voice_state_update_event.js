@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Voice State Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a user changes voice state - e.g. joins/leaves a channel, mutes/unmutes, this event will trigger",
+
+    "description": "When a user changes voice state - e.g. joins/leaves a Channel, mutes/unmutes, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The member before the voice state update"
+            "description": "Type: Object\n\nDescription: The Member before the Voicestate-Update"
         },
         {
             "name": "newmember",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The member after the voice state update"
+            "description": "Type: Object\n\nDescription: The Member after the Voicestate-Update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'voiceStateUpdate' , (oldmember, newmember) => { 
             this.StoreOutputValue( oldmember , 'oldmember' , cache); 

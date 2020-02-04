@@ -1,11 +1,18 @@
 module.exports = {
     "name": "User Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a user's details (e.g. username) are changed, this event will trigger",
+
+    "description": "When a User's details (e.g. Username) are changed, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The user before the update"
+            "description": "Type: Object\n\nDescription: The User before the update"
         },
         {
             "name": "newuser",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The user after the update"
+            "description": "Type: Object\n\nDescription: The User after the update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'userUpdate' , (olduser, newuser) => { 
             this.StoreOutputValue( olduser , 'olduser' , cache); 

@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Role Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a guild role is updated, this event will trigger",
+
+    "description": "When a Guild Role is updated, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The role before the update"
+            "description": "Type: Object\n\nDescription: The Role before the update"
         },
         {
             "name": "newrole",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The role after the update"
+            "description": "Type: Object\n\nDescription: The Role after the update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'roleUpdate' , (oldrole, newrole) => { 
             this.StoreOutputValue( oldrole , 'oldrole' , cache); 

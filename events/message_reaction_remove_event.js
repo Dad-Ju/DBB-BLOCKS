@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Message Reaction Remove [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a reaction is removed from a cached message, this event will trigger",
+
+    "description": "When a Reaction is removed from a cached Message, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The reaction object"
+            "description": "Type: Object\n\nDescription: The Reaction Bbject"
         },
         {
             "name": "user",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The user whose emoji or reaction emoji was removed"
+            "description": "Type: Object\n\nDescription: The User whose Emoji or Reaction-Emoji was removed"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'messageReactionRemove' , (messagereaction, user) => { 
             this.StoreOutputValue( messagereaction , 'messagereaction' , cache); 

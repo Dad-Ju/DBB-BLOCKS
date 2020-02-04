@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Channel Pins Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When the pins of a channel are updated, this event will trigger",
+
+    "description": "When the Pins of a Channel are updated, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The channel where the Pin got Updated. Due to the nature of the WebSocket event, not much information can be provided easily here - you need to manually check the pins yourself"
+            "description": "Type: Object\n\nDescription: The Channel where the Pin got Updated. Due to the nature of the WebSocket event, not much information can be provided easily here - you need to manually check the pins yourself"
         },
         {
             "name": "time",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "date"
             ],
-            "description": "Type: Date\n\nDescription: The time when the last pinned message was pinned"
+            "description": "Type: Date\n\nDescription: The Time when the last pinned Message was pinned"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'channelPinsUpdate' , (channel, time) => {
             this.StoreOutputValue( channel , 'channel' , cache);

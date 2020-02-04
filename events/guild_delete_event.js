@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Guild Delete (Leave) [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a guild is deleted/left, this event will trigger",
+
+    "description": "When a Guild is deleted/left, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,9 +28,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The guild that was deleted / left"
+            "description": "Type: Object\n\nDescription: The Guild that was deleted / left"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'guildDelete' , (guild) => { 
             this.StoreOutputValue( guild , 'guild' , cache);  

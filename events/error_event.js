@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Error [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When the client's WebSocket encounters a connection error, this event will trigger",
+
+    "description": "When the Client's WebSocket encounters a connection error, this event will trigger",
+
     "category": "Events",
+    
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -24,6 +31,7 @@ module.exports = {
             "description": "Type: Object\n\nDescription: The encountered Error"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'error' , (error) => { 
             this.StoreOutputValue( error , 'error' , cache);  

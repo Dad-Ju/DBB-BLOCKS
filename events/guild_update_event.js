@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Guild Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a guild is updated - e.g. name change, this event will trigger",
+
+    "description": "When a Guild is updated - e.g. Name change, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The guild before the update"
+            "description": "Type: Object\n\nDescription: The Guild before the update"
         },
         {
             "name": "newguild",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The guild after the update"
+            "description": "Type: Object\n\nDescription: The Guild after the update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'guildUpdate' , (oldguild, newguild) => { 
             this.StoreOutputValue( oldguild , 'oldguild' , cache); 

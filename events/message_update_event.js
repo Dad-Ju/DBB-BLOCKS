@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Message Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a message is updated - e.g. embed or content change, this event will trigger",
+
+    "description": "When a Message is updated - e.g. Embed or Content change, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -21,7 +28,7 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The message before the update"
+            "description": "Type: Object\n\nDescription: The Message before the update"
         },
         {
             "name": "newmsg",
@@ -29,9 +36,10 @@ module.exports = {
             "types": [
                 "object"
             ],
-            "description": "Type: Object\n\nDescription: The message after the update"
+            "description": "Type: Object\n\nDescription: The Message after the update"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'messageUpdate' , (oldmsg, newmsg) => { 
             this.StoreOutputValue( oldmsg , 'oldmsg' , cache); 

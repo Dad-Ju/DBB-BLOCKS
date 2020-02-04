@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Channel Create [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
+
     "description": "When a Channel gets created, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -24,6 +31,7 @@ module.exports = {
             ]
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'channelCreate' , (channel) => { 
             this.StoreOutputValue( channel , 'channel' , cache);

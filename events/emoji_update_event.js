@@ -1,11 +1,18 @@
 module.exports = {
     "name": "Emoji Update [Event]",
+
     "author": "Dad_Ju aka Ju#2402",
-    "description": "When a custom guild emoji is updated, this event will trigger",
+
+    "description": "When a Custom Guild Emoji is updated, this event will trigger",
+
     "category": "Events",
+
     "auto_execute": true,
+
     "inputs": [],
+
     "options": [],
+
     "outputs": [
         {
             "name": "action",
@@ -32,6 +39,7 @@ module.exports = {
             "description": "Type: Object\n\nDescription: The new Emoji"
         }
     ],
+    
     "code": function(cache){
         this.client.on( 'emojiUpdate' , (oldemoji, newemoji) => { 
             this.StoreOutputValue( oldemoji , 'oldemoji' , cache); 
