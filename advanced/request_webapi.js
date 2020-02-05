@@ -1,11 +1,11 @@
 module.exports = {
     name: "JSON from/to WebAPI",
 
+    author: "Dad_Ju aka Ju#2402",
+
     description: "Make Request to an WebAPI",
 
     category: "Advanced",
-
-    auto_execute: true,
 
     inputs: [
         {
@@ -17,13 +17,13 @@ module.exports = {
         {
             "name": "url",
             "title": "URL",
-            "description": "Description: The URL to send request.",
-            "types": ["object", "unspecified"]
+            "description": "Type: Unspecified, Text\n\nDescription: The URL to send request.",
+            "types": ["text", "unspecified"]
         },
         {
             "name": "header",
             "title": "HEAD",
-            "description": "Description: The Header Object to add to the Request.\n(if you don't need it leave it empty)",
+            "description": "Type: Object, Unspecified\n\nDescription: The Header Object to add to the Request.\n(if you don't need it leave it empty)",
             "types": ["object", "unspecified"]
         },
         {
@@ -70,26 +70,26 @@ module.exports = {
 
     code: async function(cache) {
        try {
-            let axios = require("axios");
+            let axios = await this.require("axios");
             let URI = this.GetInputValue("url", cache);
             let postdata = this.GetInputValue("postdata", cache);
-            let type = this.GetOptionValue("type", cache);
+            let type = parseInt(this.GetOptionValue("type", cache));
             let head = this.GetInputValue("header", cache);
             let retdata;
             let reqmethode;
             switch(type){
-                case 1: reqmethode = "get" break;
-                case 2: reqmethode = "post" break;
+                case 1: reqmethode = "get"; break;
+                case 2: reqmethode = "post"; break;
             }
             let sendobj = {
                 method: reqmethode,
                 url: URI
             }
             if(reqmethode == "POST"){
-                if(typeod postdata == "object"){
+                if(typeof postdata == "object"){
                     sendobj.data = postdata;
                 }else{
-                    throw new Error("postdata must an Object!");
+                    throw new Error("postdata must be an Object or Text!");
                 }
             }
             if(head){
@@ -100,11 +100,12 @@ module.exports = {
                 }
             }
             let request = await axios(sendobj);
-            var retdata = request.data;
+            retdata = request.data;
             if(request.status != 200){
                 throw new Error("Request Failed!!").requestdata = request;
             }
             this.StoreOutputValue(retdata, "retdata", cache);
+            this.RunNextBlock("action", cache);
         } catch (error) {
             console.log(error);
             this.RunNextBlock("error", cache);

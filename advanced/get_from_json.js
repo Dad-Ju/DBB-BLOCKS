@@ -1,9 +1,9 @@
 module.exports = {
-    name: "Text to/from JSON-Object",
+    name: "Get Value from Object (JSON)",
 
     author: "Dad_Ju aka Ju#2402",
 
-    description: "Parse an text to an JSON-Object or a JSON to a text.",
+    description: "Get a Value from a Object (JSON) out of the Key.",
 
     category: "Advanced",
 
@@ -16,24 +16,19 @@ module.exports = {
         },
         {
             "name": "input",
-            "title": "Input",
-            "description": "Acceptable Types: Unspecified, Text, Object\n\nDescription: The Text that you want to convert to a JSON-Object.",
+            "title": "Object",
+            "description": "Acceptable Types: Unspecified, Text\n\nDescription: The Object from where you want the Key.",
+            "types": ["unspecified", "object"]
+        },
+        {
+            "name": "key",
+            "title": "Key",
+            "description": "Acceptable Types: Unspecified, Text\n\nDescription: The Key that you want to get from the Object.",
             "types": ["unspecified", "text", "object"]
         }
     ],
 
-    options: [
-        {
-            "name": "type",
-            "title": "Mode",
-            "description": "Description: What should i do with the Input.",
-            "type": "SELECT",
-            "options": {
-                1: "PARSE (Make Object)",
-                2: "STRINGIFY (Make Text)",
-            }
-        }
-    ],
+    options: [],
 
     outputs: [
         {
@@ -45,8 +40,8 @@ module.exports = {
         {
             "name": "output",
             "title": "Output",
-            "description": "Type: Object\n\nDescription: The Object/Text from the Input.",
-            "types": ["object", "text"]
+            "description": "Type: unspecified (could be anything)\n\nDescription: The Value from the Key of the Input.",
+            "types": ["object", "text", "unspecified", "list"]
         },
         {
             "name": "error",
@@ -56,17 +51,12 @@ module.exports = {
         }
     ],
 
-    code: function (cache) {
+    code: function(cache) {
+        const key = this.GetInputValue("key", cache);
         const input = this.GetInputValue("input", cache);
-        const mode = parseInt(this.GetOptionValue("type", cache));
-        let type;
-        switch (mode) {
-            case 1: type = "parse"; break;
-            case 2: type = "stringify"; break;
-        }
 
         try {
-            let out = JSON[type](input);
+            let out = input[key];
             this.StoreOutputValue(out, "output", cache);
             this.RunNextBlock("action", cache);
         } catch (error) {
