@@ -46,11 +46,11 @@ module.exports = {
             if(guild.voiceConnection){
                 guild.voiceConnection.disconnect();
             }else{
-                console.log("Arent Connected to a Chnnel on this Guild");
+                console.log("Arent Connected to a Channel on this Guild");
             }
             this.RunNextBlock("action", cache);
         }else{
-            console.log("[JOINE VOICE]: NEED THE GUILD OBJECT TO JOIN A CHANNEL!!!");
+            console.log("[LEAVE VOICE]: NEED THE GUILD OBJECT TO JOIN A CHANNEL!!!");
             this.RunNextBlock("error", cache);
         }
     }

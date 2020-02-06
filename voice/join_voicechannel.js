@@ -51,7 +51,7 @@ module.exports = {
         }
     ],
 
-    code: function(cache) {
+    code: async function(cache) {
         const guild = this.GetInputValue("guild", cache);
         var inputchannel = this.GetInputValue("voice", cache);
         var channel;
@@ -63,7 +63,7 @@ module.exports = {
             }
             if(typeof channel == "object" && channel.type == "voice"){
                 try {
-                    channel.join();
+                    await channel.join();
                     this.StoreOutputValue(channel, "channel", cache);
                     this.RunNextBlock("action", cache);
                 } catch (error) {

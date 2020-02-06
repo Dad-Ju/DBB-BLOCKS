@@ -52,18 +52,55 @@ module.exports = {
         }
     ],
 
-    code: function(cache) {
+    code: async function(cache) {
         const guild = this.GetInputValue("guild", cache);
         var filepath = this.GetInputValue("filepath", cache);
+        _this = this;
+        /**
+        For Discord.JS@^12.0.0 
+        try {
+            require.resolve("@discordjs/opus");
+        } catch (error) {
+            console.log("Trying to install @discordjs/opus");
+            _this.require("@discordjs/opus");
+        }
+        try {
+            require.resolve("sodium");
+        } catch (error) {
+            console.log("Its recomendet to install sodium!!!");
+            // _this.require("sodium");
+        }
+        */
+
+        try {
+            require.resolve("node-opus");
+        } catch (error) {
+            console.log("Please install node-opus for best Performence.\nUse this:\n'npm install node-opus'\n'npm remove opusscript'");
+            try {
+                require.resolve("opusscript");
+                console.log("Using opusscript, switch to node-opus if you can!");
+            } catch (error) {
+                this.require("opusscript");
+            }
+        }
+
         if(typeof guild == "object"){
             var voicecon = guild.voiceConnection;
             if(voicecon){
                 var fullpath = path.join(__dirname + "/../" + filepath);
-                var disp = voicecon.playFile(fullpath, { volume : 0.5, bitrate : "auto", passes : 3});
-                this.RunNextBlock("action", cache);
+                let disp = voicecon.playFile(fullpath, { volume : 0.5, bitrate : "auto", passes : 5})
                 disp.once("end", _ => {
-                    this.RunNextBlock("end", cache);
+                    console.log("final");
+                    try {
+                        _this.RunNextBlock("end", cache);
+                    } catch (error) {
+                        console.log(error);   
+                    } 
                 });
+                disp.on("error", error => {
+                    console.log(error);
+                });
+                this.RunNextBlock("action", cache);
             }else{
                 console.log("[PLAY FILE]: Not connected to a Voice in this Guild.")
                 this.RunNextBlock("error", cache);
