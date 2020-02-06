@@ -144,7 +144,7 @@ module.exports = {
 
             // Generate Object to parse in overwritePermissons();
             let obj = {}; obj[permisson.name] = setmode;
-            channel.overwritePermissions(target, obj);
+            await channel.overwritePermissions(target, obj);
             
             this.RunNextBlock("action", cache);
         } catch (error) {
