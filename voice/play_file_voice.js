@@ -24,7 +24,7 @@ module.exports = {
         {
             "name": "filepath",
             "title": "Path to File",
-            "description": "The Path to the file (./data/music.mp3)",
+            "description": "The Path to the file (/data/music.mp3)",
             "types": ["text", "unspecified"]
         }
     ],
